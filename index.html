@@ -1,0 +1,102 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="max-w-5xl m-auto px-10">
+    <div class="mt-10">
+        <h1 class="text-4xl font-bold uppercase">blog</h1>
+        <div class="mt-4 flex flex-col md:flex-row gap-4 justify-between items-center">
+            <h5 class="text-gray-500">Enjoy reading blogs? Go and Enjoy...</h5>
+            <button class="py-2 px-4 text-white bg-green-600 rounded shadow w-full md:w-fit" id="create-blog-button"
+                onclick="(()=>{
+             const createForm=document.getElementById('create-blog-form');
+             createForm.className=createForm.className.replace('hidden','visible');
+            })()">
+                Create Blog
+            </button>
+        </div>
+        <hr class="mt-2" />
+    </div>
+
+    <div class="mt-10 flex flex-wrap gap-10 items-center justify-between" id="blogs-container">
+
+    </div>
+    <!-- Create blog form-->
+    <div id="create-blog-form" class="relative z-10 hidden" aria-labelledby="modal-title" role="dialog"
+        aria-modal="true">
+        <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+
+        <div class="fixed inset-0 z-10 overflow-y-auto">
+            <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+
+                <div
+                    class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-3xl">
+                    <div class="flex justify-end pt-2 pr-5 text-gray-500 cursor-pointer" onclick="(()=>{
+                        const blogDetails=document.getElementById('create-blog-form');
+                        blogDetails.className=blogDetails.className.replace('visible','hidden');
+                    })()"> X </div>
+
+                    <form class="flex flex-col items-center gap-4">
+                        <h3 class="p-4 text-3xl font-semibold text-gray-900">Create a new blog...</h3>
+                        <input id="create-blog-form--title-input" type="text" name="title"
+                            class="border border=gray-700 p-2 rounded shadow-sm w-4/5" placeholder="Enter blog title" />
+                        <textarea id="create-blog-form--intro-input" name="intro"
+                            class="border border=gray-700 p-2 rounded shadow-sm w-4/5"
+                            placeholder="Small Intro before long description"></textarea>
+                        <textarea id="create-blog-form--description-input" name="desc"
+                            class="border border=gray-700 p-2 rounded shadow-sm w-4/5"
+                            placeholder="write your story"></textarea>
+                        <input id="create-blog-form--image-input" type="url" name="image"
+                            class="border border=gray-700 p-2 rounded shadow-sm w-4/5" placeholder="Add a image url" />
+                        <div class="flex items-center justify-end gap-4 w-4/5">
+                            <button onclick="(()=>{
+                                const blogDetails=document.getElementById('create-blog-form');
+                                blogDetails.className=blogDetails.className.replace('visible','hidden');
+                            })()" class="py-2 px-4 text-white bg-gray-600 rounded shadow ">Cancel</button>
+                            <button type="button" class="py-2 px-4 text-white bg-green-600 rounded shadow " onclick="
+                                    addBlog()">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Blog Details-->
+    <div id="blog-details" class="hidden relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+
+        <div class="fixed inset-0 z-10 overflow-y-auto">
+            <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+
+                <div
+                    class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-3xl">
+                    <div class="flex justify-end pt-2 pr-5 text-gray-500 cursor-pointer" onclick="(()=>{
+                        const blogDetails=document.getElementById('blog-details')
+                        blogDetails.className=blogDetails.className.replace('visible','hidden')
+                    })()">X</div>
+                    <div class="p-6">
+                        <h2 id="blog-details--title" class="text-3xl font-bold m-2"></h2>
+                        <div class="flex justify-center mt-4">
+                            <img id="blog-details--image" src="" alt="Blog Image"
+                                class="rounded-lg shadow-lg object-center object-cover" height="600" width="600" />
+                        </div>
+                        <p id="blog-details--intro" class="text-gray-600 text-center mt-4">Illo sint voluptas. Error
+                        </p>
+
+                        <p id="blog-details--description" class="text-gray-600 text-sm mt-6">Sollicitudin tristique </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>
